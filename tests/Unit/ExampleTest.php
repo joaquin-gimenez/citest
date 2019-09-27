@@ -14,8 +14,8 @@ class ExampleTest extends TestCase
      */
     public function testHelloMessage()
     {
-        $response = $this->json('GET', '/hello/bobby');
+        $response = $this->json('GET', '/hello/jaco');
 
-        $response->assertSeeText('bobby');
+        $response->assertSeeText('jaco');
     }
 }
