@@ -14,7 +14,7 @@ cache:
     - vendor
 
 install:
-  - cp .env.testing .env
+  - cp .env.travis .env
   - composer self-update
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
