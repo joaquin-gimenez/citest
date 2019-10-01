@@ -15,7 +15,7 @@ class HelloController extends Controller
 
     // use RESTActions;
 
-    public function get($name): ?\Illuminate\Http\JsonResponse
+    public function get($name)
     {
         $m = static::MODEL;
         
