@@ -1,0 +1,41 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # Specify the version you desire here
+      - image: circleci/php:7.1-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      # - image: circleci/mysql:5.7-ram
+      #
+      # - image: redis:2.8.19
+
+    steps:
+            - run: sudo apt-get install -y libsqlite3-dev
+            - run: cp .env.travis .env
+            - run: composer install -n --ignore-platform-reqs
+            - run: npm install
+            - run: npm run production
+            - run: vendor/bin/phpunit
+
+            - run:
+                name: Start Chrome Driver
+                command: ./vendor/laravel/dusk/bin/chromedriver-linux
+                background: true
+
+            - run:
+                name: Run Laravel Server
+                command: php artisan serve
+                background: true
+
+            - run:
+                name: Run Laravel Dusk Tests
+                command: php artisan dusk
