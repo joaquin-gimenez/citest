@@ -13,13 +13,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function get($name)
-    {
-        return $this->generateMessage($name);
-        // return view('hello', [ 'name' => $this->generateMessage('Bob') ]);
-    }
-
-    public function generateMessage($name) {
-        return "Hello " . $name . " how are you doing!";
-    }
+    
 }
