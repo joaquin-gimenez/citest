@@ -9,7 +9,7 @@ use App\User;
 use Illuminate\Database\Eloquent\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class HelloController extends Controller
+class UserController extends Controller
 {
     public const MODEL = User::class;
 
@@ -41,6 +41,6 @@ class HelloController extends Controller
     }
 
     public function generateMessage($name) {
-        return "Hello " . $name . " how are you doing!";
+        return "Hello " . $name . ", how are you doing!";
     }
 }
