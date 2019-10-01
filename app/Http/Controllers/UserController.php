@@ -9,13 +9,13 @@ use App\User;
 use Illuminate\Database\Eloquent\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class HelloController extends Controller
+class UserController extends Controller
 {
     public const MODEL = User::class;
 
     // use RESTActions;
 
-    public function get($name): ?\Illuminate\Http\JsonResponse
+    public function get($name)
     {
         $m = static::MODEL;
         
@@ -41,6 +41,6 @@ class HelloController extends Controller
     }
 
     public function generateMessage($name) {
-        return "Hello " . $name . " how are you doing!";
+        return "Hello " . $name . ", how are you doing!";
     }
 }
