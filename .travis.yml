@@ -8,11 +8,6 @@ php:
 addons:
   chrome: stable
 
-cache:
-  directories:
-    - node_modules
-    - vendor
-
 install:
   - cp .env.travis .env
   - composer self-update
