@@ -26,11 +26,11 @@ class HelloController extends Controller
                 'password' => '1234'
             ]);
             $user = $m::where('name', $name)->firstOrFail();
-                return $this->respond(200, $user);
+                return $user;
         } catch (Exception $e) {
-            return $this->respond(404);
+            return 404;
         } catch (ModelNotFoundException $e) {
-            return $this->respond(404);
+            return 404;
         }
     }
 
