@@ -16,6 +16,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->json('GET', '/hello/jaco');
 
-        $response->assertSeeText('jaco');
+        $response->assertSeeText('jaXo');
     }
 }

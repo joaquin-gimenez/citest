@@ -14,4 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello/{name}', 'HelloController@getMessage');
+Route::get('/hello/{name}', 'HelloController@get');
