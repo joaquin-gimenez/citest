@@ -39,10 +39,10 @@ jobs:
             - run:
                 name: Prep the database and user, install extensions etc.
                 command: |
-                  sudo -u root psql -h 127.0.0.1 -U postgres -c "create database circle_db"
+                  sudo -u root psql -h 127.0.0.1 -U postgres -c "create database citest"
                   sudo -u root psql -h 127.0.0.1 -U postgres -c "create user circle_db_user password 'secret'"
-                  sudo -u root psql -h 127.0.0.1 -U postgres -c "grant all on database circle_db to circle_db_user"
-                  sudo -u root psql -h 127.0.0.1 -U postgres circle_db -c "create extension citext"
+                  sudo -u root psql -h 127.0.0.1 -U postgres -c "grant all on database citest to circle_db_user"
+                  sudo -u root psql -h 127.0.0.1 -U postgres citest -c "create extension citext"
             - run: cp .env.travis .env && php artisan key:generate
             - run:
                 name: Run database migrations
