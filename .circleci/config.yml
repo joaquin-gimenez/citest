@@ -65,5 +65,8 @@ jobs:
                 background: true
 
             - run:
-                name: Run Laravel Dusk Tests
+                name: update Laravel Dusk Tests
                 command: php artisan dusk:chrome-driver 74
+            - run:
+                name: Run Laravel Dusk Tests
+                command: php artisan dusk
