@@ -42,8 +42,8 @@ jobs:
                   sudo -u root psql -h 127.0.0.1 -U postgres -c "create user circle_db_user password 'secret'"
                   sudo -u root psql -h 127.0.0.1 -U postgres -c "grant all on database circle_db to circle_db_user"
                   sudo -u root psql -h 127.0.0.1 -U postgres circle_db -c "create extension citext"
-            - run: cp .env.travis .env && php artisan key:generate
             - run: composer install -n --ignore-platform-reqs
+            - run: cp .env.travis .env && php artisan key:generate
             - run:
                 name: Run database migrations
                 command: php artisan migrate --force
