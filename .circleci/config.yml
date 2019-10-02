@@ -8,7 +8,9 @@ jobs:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.1-node-browsers
-
+      - image: postgres:9.6
+        environment:
+            - POSTGRES_USER=postgres
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -20,12 +22,31 @@ jobs:
 
     steps:
             - checkout
-            - run: ls -ln 
+            - run:
+                name: Install PostgreSQL client tools
+                command: |
+                  sudo apt-get update && sudo apt-get install postgresql-client
+            - run:
+                name: Install and enable pdo_pgsql php extension
+                command: |
+                  sudo apt-get update && sudo apt-get install libpq-dev
+                  sudo docker-php-ext-install pdo_pgsql && sudo docker-php-ext-enable pdo_pgsql
+            - run:
+                name: Update composer
+                command: sudo composer self-update
             - run: sudo apt-get install -y libsqlite3-dev
-            - run: checkout
-            - run: ls -ln
-            - run: cp .env.travis .env
+            - run:
+                name: Prep the database and user, install extensions etc.
+                command: |
+                  sudo -u root psql -h 127.0.0.1 -U postgres -c "create database circle_db"
+                  sudo -u root psql -h 127.0.0.1 -U postgres -c "create user circle_db_user password 'secret'"
+                  sudo -u root psql -h 127.0.0.1 -U postgres -c "grant all on database homestead to homestead"
+                  sudo -u root psql -h 127.0.0.1 -U postgres homestead -c "create extension citext"
+            - run: cp .env.travis .env && php artisan key:generate
             - run: composer install -n --ignore-platform-reqs
+            - run:
+                name: Run database migrations
+                command: php artisan migrate --force
             - run: npm install
             - run: npm run production
             - run: vendor/bin/phpunit
