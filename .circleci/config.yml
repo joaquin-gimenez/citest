@@ -19,7 +19,7 @@ jobs:
       # - image: redis:2.8.19
 
     steps:
-            - run: checkout
+            - checkout
             - run: ls -ln 
             - run: sudo apt-get install -y libsqlite3-dev
             - run: cp .env.travis .env
