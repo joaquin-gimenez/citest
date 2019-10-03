@@ -2,8 +2,6 @@ dist: precise
 
 language: php
 
-php:
-  - 7.3
 
 # cache:
 #   directories:
@@ -15,7 +13,7 @@ services:
 
 install:
   - cp .env.travis .env
-  # - composer self-update
+  - composer self-update
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
 
