@@ -11,7 +11,6 @@ jobs:
       - image: postgres:9.6
         environment:
             - POSTGRES_USER=postgres
-            - APP_ENV=testing
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -35,6 +34,7 @@ jobs:
             - run:
                 name: Update composer
                 command: sudo composer self-update
+            - run: echo 'export APP_ENV="testing"' >> $BASH_ENV
             - run: sudo apt-get install -y libsqlite3-dev
             # - run:
             #     name: Install Chrome
