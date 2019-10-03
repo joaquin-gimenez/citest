@@ -25,7 +25,6 @@ before_script:
   - phantomjs --webdriver=127.0.0.1:9515 & # Start PhantomJS driver
   # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
-  # - sleep 5
 
 script:
   - vendor/bin/phpunit
