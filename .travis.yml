@@ -2,6 +2,8 @@ dist: precise
 
 language: php
 
+php:
+  - 7.3
 
 # cache:
 #   directories:
