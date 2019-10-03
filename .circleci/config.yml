@@ -57,7 +57,7 @@ jobs:
                 command: php artisan migrate --force
             - run: npm install
             - run: npm run production
-            - run: vendor/bin/phpunit
+            # - run: vendor/bin/phpunit
             - run:
                 name: update Laravel Dusk Tests
                 command: chmod -R 0755 vendor/laravel/dusk/bin/
