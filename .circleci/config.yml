@@ -75,5 +75,9 @@ jobs:
                 name: update Laravel Dusk Tests
                 command: php artisan dusk:chrome-driver 72
             - run:
+                name: update Laravel Dusk Tests
+                command: chmod -R 0755 vendor/laravel/dusk/bin/
+                
+            - run:
                 name: Run Laravel Dusk Tests
                 command: php artisan dusk
