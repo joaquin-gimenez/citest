@@ -9,8 +9,8 @@ jobs:
       # Specify the version you desire here
       - image: circleci/php:7.1-node-browsers
       - image: postgres:9.6
-        environment:
-            - POSTGRES_USER=postgres
+        # environment:
+        #     - POSTGRES_USER=postgres
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -48,9 +48,6 @@ jobs:
             - run: npm install
             - run: npm run production
             - run: vendor/bin/phpunit
-            # - run:
-            #     name: update Laravel Dusk Tests
-            #     command: chmod -R 0755 vendor/laravel/dusk/bin/
             - run:
                 name: update Laravel Dusk Tests
                 command: php artisan dusk:chrome-driver 71
@@ -58,10 +55,10 @@ jobs:
                 name: Start Chrome Driver
                 command: ./vendor/laravel/dusk/bin/chromedriver-linux
                 background: true
-            # - run:
-            #     name: Run Laravel Server
-            #     command: php artisan serve
-            #     background: true
+            - run:
+                name: Run Laravel Server
+                command: php artisan serve
+                background: true
             - run:
                 name: Run Laravel Dusk Tests
                 command: php artisan dusk
