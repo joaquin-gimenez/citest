@@ -61,19 +61,21 @@ jobs:
             - run:
                 name: update Laravel Dusk Tests
                 command: chmod -R 0755 vendor/laravel/dusk/bin/
-            # - run:
-            #     name: Start Chrome Driver
-            #     command: ./vendor/laravel/dusk/bin/chromedriver-linux
-            #     background: true
+
+            - run:
+                name: update Laravel Dusk Tests
+                command: php artisan dusk:chrome-driver 71
+            - run:
+                name: Start Chrome Driver
+                command: ./vendor/laravel/dusk/bin/chromedriver-linux
+                background: true
 
             - run:
                 name: Run Laravel Server
                 command: php artisan serve
                 background: true
 
-            - run:
-                name: update Laravel Dusk Tests
-                command: php artisan dusk:chrome-driver 71
+            
             - run:
                 name: Run Laravel Dusk Tests
                 command: php artisan dusk
