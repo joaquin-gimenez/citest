@@ -71,7 +71,7 @@
                 <div class="title m-b-md">
                   {{ $name }}
                 </div>
-                <p>This isdddddfdssssdsddsdsdddsfF djsdssxujsstsd sasdsd a samspsdle page mfodified to test again!</p>
+                <p>This isdddddfdsssssdsddsdsdddsfF djsdssxujsstsd sasdsd a samspsdle page mfodified to test again!</p>
             </div>
         </div>
     </body>
