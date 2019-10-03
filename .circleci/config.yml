@@ -57,7 +57,7 @@ jobs:
             - run: npm install
             - run: npm run production
             - run: vendor/bin/phpunit
-           - run:
+            - run:
                 name: update Laravel Dusk Tests
                 command: chmod -R 0755 vendor/laravel/dusk/bin/
                 
