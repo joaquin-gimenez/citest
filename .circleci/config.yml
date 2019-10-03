@@ -51,8 +51,8 @@ jobs:
                 name: Run database migrations
                 command: php artisan migrate --force
             - restore_cache:
-              keys:
-                - node-{{ checksum "package.json" }}
+                keys:
+                  - node-{{ checksum "package.json" }}
             - run: npm update
             - save_cache:
                 paths:
