@@ -55,8 +55,8 @@ jobs:
                 - node-{{ checksum "package.json" }}
             - run: npm update
             - save_cache:
-              paths:
-                - ./node_modules
+                paths:
+                  - ./node_modules
               key: node-{{ checksum "package.json" }}
             - run: npm run production
             - run: vendor/bin/phpunit
