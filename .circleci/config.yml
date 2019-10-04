@@ -53,7 +53,7 @@ jobs:
             - restore_cache:
                 keys:
                   - node-{{ checksum "package.json" }}
-            - run: npm update
+            - run: npm install
             - save_cache:
                 paths:
                   - ./node_modules
