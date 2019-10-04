@@ -23,7 +23,6 @@ before_script:
   - psql -c 'create database citest;' -U postgres &
   - php artisan migrate --no-interaction -vvv &
   - phantomjs --webdriver=127.0.0.1:9515 & # Start PhantomJS driver
-  # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 
 script:
