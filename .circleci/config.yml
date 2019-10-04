@@ -26,19 +26,19 @@ jobs:
                 command: |
                   sudo apt-get update && sudo apt-get install libpq-dev
                   sudo docker-php-ext-install pdo_pgsql && sudo docker-php-ext-enable pdo_pgsql
-            - restore_cache:
-                keys:
-                    - vendor-{{ checksum "composer.json" }}
+            # - restore_cache:
+            #     keys:
+            #         - vendor-{{ checksum "composer.json" }}
             - run:
                 name: Update composer
                 command: sudo composer self-update
             - run: echo 'export APP_ENV="testing"' >> $BASH_ENV
             - run: sudo apt-get install -y libsqlite3-dev
             - run: composer install -n --ignore-platform-reqs
-            - save_cache:
-                paths:
-                    - ./vendor
-                key: vendor-{{ checksum "composer.json" }}    
+            # - save_cache:
+            #     paths:
+            #         - ./vendor
+            #     key: vendor-{{ checksum "composer.json" }}    
             - run:
                 name: Prep the database and user, install extensions etc.
                 command: |
@@ -50,14 +50,14 @@ jobs:
             - run:
                 name: Run database migrations
                 command: php artisan migrate --force
-            - restore_cache:
-                keys:
-                  - node-{{ checksum "package.json" }}
+            # - restore_cache:
+            #     keys:
+            #       - node-{{ checksum "package.json" }}
             - run: npm install
-            - save_cache:
-                paths:
-                  - ./node_modules
-                key: node-{{ checksum "package.json" }}
+            # - save_cache:
+            #     paths:
+            #       - ./node_modules
+            #     key: node-{{ checksum "package.json" }}
             - run: npm run production
             - run: vendor/bin/phpunit
             - run:
