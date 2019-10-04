@@ -61,7 +61,7 @@ jobs:
             - run: npm run production
             - run: vendor/bin/phpunit
             - run:
-                name: update Laravel Dusk Tests
+                name: Update Chrome Version
                 command: php artisan dusk:chrome-driver 71
             - run:
                 name: Start Chrome Driver
