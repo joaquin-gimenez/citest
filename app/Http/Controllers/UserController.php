@@ -39,7 +39,7 @@ class UserController extends Controller
         $m = static::MODEL;
 
         try {
-            $users = factory(User::class, 100)->create();
+            $users = factory(User::class, 1000)->create();
             return $users;
         } catch (Exception $e) {
             return 404;
