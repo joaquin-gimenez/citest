@@ -39,7 +39,7 @@ class UserController extends Controller
         $m = static::MODEL;
 
         try {
-            for ($x = 0; $x < 100; $x++) {
+            for ($x = 0; $x < 1000; $x++) {
                 $user = factory(User::class)->create();
             }
             return User::all();
