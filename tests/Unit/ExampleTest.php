@@ -23,6 +23,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->json('GET', '/user');
 
-        $response->assertJson(['name' => 'jaco']);
+        $response->assertJsonCount(100);
     }
 }
