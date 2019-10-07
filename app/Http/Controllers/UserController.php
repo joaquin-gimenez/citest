@@ -26,7 +26,7 @@ class UserController extends Controller
                 'password' => '1234'
             ]);
             $user = $m::where('name', $name)->firstOrFail();
-            $m::all()->delete();
+            // $m::all()->delete();
             return $user;
         } catch (Exception $e) {
             return 404;
