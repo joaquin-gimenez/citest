@@ -12,9 +12,16 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testHelloMessage()
+    public function testGetOne()
     {
         $response = $this->json('GET', '/user/jaco');
+
+        $response->assertJson(['name' => 'jaco']);
+    }
+
+    public function testGetAll()
+    {
+        $response = $this->json('GET', '/user');
 
         $response->assertJson(['name' => 'jaco']);
     }

@@ -34,6 +34,20 @@ class UserController extends Controller
         }
     }
 
+    public function getAll()
+    {
+        $m = static::MODEL;
+
+        try {
+            $users = factory(App\User::class, 100)->create();
+            return $users;
+        } catch (Exception $e) {
+            return 404;
+        } catch (ModelNotFoundException $e) {
+            return 404;
+        }
+    }
+
     public function getMessage($name)
     {
         return $this->generateMessage($name);
