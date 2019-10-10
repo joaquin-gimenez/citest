@@ -26,7 +26,24 @@ class UserController extends Controller
                 'password' => '1234'
             ]);
             $user = $m::where('name', $name)->firstOrFail();
-                return $user;
+            // $m::all()->delete();
+            return $user;
+        } catch (Exception $e) {
+            return 404;
+        } catch (ModelNotFoundException $e) {
+            return 404;
+        }
+    }
+
+    public function getAll()
+    {
+        $m = static::MODEL;
+
+        try {
+            for ($x = 1; $x <= 10; $x++) {
+                $user = factory(User::class)->create();
+            }
+            return User::all();
         } catch (Exception $e) {
             return 404;
         } catch (ModelNotFoundException $e) {

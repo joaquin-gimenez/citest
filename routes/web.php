@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/user/message/{name}', 'UserController@getMessage');
+Route::get('/user', 'UserController@getAll');
 Route::get('/user/{name}', 'UserController@get');

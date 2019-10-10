@@ -5,17 +5,17 @@ language: php
 php:
   - 7.3
 
-# cache:
-#   directories:
-#     - node_modules
-#     - vendor
+cache:
+  directories:
+    - node_modules
+    - vendor
 
 services:
   - postgresql
 
 install:
   - cp .env.travis .env
-  # - composer self-update
+  - composer self-update
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - php artisan key:generate
 
@@ -23,9 +23,7 @@ before_script:
   - psql -c 'create database citest;' -U postgres &
   - php artisan migrate --no-interaction -vvv &
   - phantomjs --webdriver=127.0.0.1:9515 & # Start PhantomJS driver
-  # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
-  # - sleep 5
 
 script:
   - vendor/bin/phpunit
